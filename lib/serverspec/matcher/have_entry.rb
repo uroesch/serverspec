@@ -7,6 +7,12 @@ RSpec::Matchers.define :have_entry do |entry|
     end
   end
 
+  description do
+    message = 'have entry'
+    message << " with user #{@user}" if @user
+    message
+  end
+
   # For cron type
   chain :with_user do |user|
     @user = user

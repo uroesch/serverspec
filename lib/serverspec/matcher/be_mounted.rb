@@ -3,6 +3,13 @@ RSpec::Matchers.define :be_mounted do
     path.mounted?(@attr, @only_with)
   end
 
+  description do
+    message = 'be mounted'
+    message << " with #{@attr}" unless @only_with
+    message << " only with #{@attr}" if @only_with
+    message
+  end
+
   chain :with do |attr|
     @attr      = attr
     @only_with = false
