@@ -3,11 +3,9 @@ RSpec::Matchers.define :be_monitored_by do |monitor|
     service.monitored_by?(monitor, @monitor_name)
   end
   description do 
-    if @monitor_name
-      "be monitored by #{monitor} with name #{@monitor_name}"
-    else 
-      "be monitored by #{monitor}" 
-    end 
+    message = "be monitored by #{monitor}" 
+    message << " with name #{@monitor_name}" if @monitor_name
+    message
   end 
 
   chain :with_name do |name|
